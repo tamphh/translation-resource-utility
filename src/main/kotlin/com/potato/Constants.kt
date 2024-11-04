@@ -7,6 +7,7 @@ object Constants {
     }
 
     object Language {
+        const val ENGLISH = "en"
         const val DEFAULT = "Default"
     }
 }

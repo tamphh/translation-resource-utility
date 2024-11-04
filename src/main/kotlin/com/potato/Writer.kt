@@ -59,7 +59,7 @@ object Writer {
             else -> "$key: \"$value\",\n"
         }.let {
             if (comment?.isNotEmpty() == true) {
-                "\n\t<!-- $comment -->\n$it"
+                "${getComment(platform, comment)}\n$it"
             } else {
                 it
             }
@@ -101,6 +101,14 @@ object Writer {
             ANDROID -> "</resources>"
             IOS -> ""
             else -> "}\n\nexport default LOCALIZED_STRINGS;"
+        }
+    }
+
+    private fun getComment(platform: String, comment: String): String {
+        return when (platform) {
+            ANDROID -> "\n\t<!-- $comment -->"
+            IOS -> "//$comment"
+            else -> ""
         }
     }
 }

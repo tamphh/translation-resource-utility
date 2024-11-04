@@ -1,13 +1,32 @@
 # Localize
 Utility to convert csv data into android, ios or web string resource formats.
 
-## CSV sample
+## Usage
 - Prepare a csv file with 1st column as key, and subsequent columns as locales e.g.
 
 comment   |untranslatable| key           | en           | es  | it  |
 ----------|--------------| ------------- |------------- | ----- | ----- |
 comment_1 |false         | welcome_text  | welcome      | bienvenidos | benvenuto |
 comment_2 |true          | bye_text      | goodbye      |   adiós | arrivederci |
+
+- Go to app folder, run command:
+```
+./gradlew run --args="--file=src/main/resources/test.csv"
+```
+
+- Converted string resources will be in exported folder based on platform:
+  - Android:
+    ```
+    exported
+    ├── values-en
+    │   ├── strings.xml
+    ├── values-de
+    │   ├── strings.xml
+    ├── values-vi
+    │   ├── strings.xml
+    ```
+  - iOS:
+    
 
 ## Code structure
 You can use this project as a starting point for further customization to meet your need.
