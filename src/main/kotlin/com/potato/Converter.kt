@@ -10,10 +10,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 object Converter {
-    fun convert(fileName: String, platform: String) {
+    fun convert(fileName: String, platform: String, delimiter: Char = ',') {
         runBlocking {
             parseData(
-                readFile(fileName),
+                readFile(fileName, delimiter),
                 false
             )
                 .forEach { (locale, records) ->
