@@ -1,22 +1,39 @@
 # Localize
-Utility to convert csv data into android, ios or web string resource formats.
+Utility to convert CSV data into Android and iOS string resource formats.
 
 ## Usage
-- Prepare a csv file with 1st column as key, and subsequent columns as locales e.g.
+Prepare a CSV file with 1st column as `comment`, 2nd one as `untranslatable`, 3rd one as `key`, and subsequent columns as locales e.g.
 
 comment   |untranslatable| key           | en           | es  | it  |
 ----------|--------------| ------------- |------------- | ----- | ----- |
 comment_1 |false         | welcome_text  | welcome      | bienvenidos | benvenuto |
 comment_2 |true          | bye_text      | goodbye      |   adiós | arrivederci |
 
-- Go to app folder, run command:
-```
-./gradlew run --args="--file=src/main/resources/test.csv"
-```
+### Go to app folder, run command:
+  ```shell
+  ./gradlew run --args="-f path/to/your_file.csv -os {platform} -d {delimiter}"
+  ```
+Delimiter is default to **comma** **`,`**
 
-- Converted string resources will be in exported folder based on platform:
-  - Android:
-    ```
+**Example**:
+  ```shell
+  // Android
+  ./gradlew run --args="-f src/main/resources/sample.csv -os android -d ;"
+  
+  // iOS
+  ./gradlew run --args="-f src/main/resources/test.csv -os ios -d ,"
+  
+  // same as
+  ./gradlew run --args="-f src/main/resources/test.csv -os ios"
+  ```
+
+### Converted string resources will be in exported folder based on platform:
+- **For Android**:
+    ```shell
+    ./gradlew run --args="-f src/main/resources/sample.csv -os android -d ;"
+    ``` 
+  Output result:
+    ```markdown
     exported
     ├── values-en
     │   ├── strings.xml
@@ -25,18 +42,30 @@ comment_2 |true          | bye_text      | goodbye      |   adiós | arrivederci
     ├── values-vi
     │   ├── strings.xml
     ```
-  - iOS:
-    
+- **For iOS**:
+    ```shell
+    ./gradlew run --args="-f src/main/resources/test.csv -os ios -d ,"
+    ``` 
+  Output result:
+    ```markdown
+    exported
+    ├── en.lproj
+    │   ├── Localizable.strings
+    ├── de.lproj
+    │   ├── Localizable.strings
+    ├── vi.lproj
+    │   ├── Localizable.strings
+    ```
 
 ## Code structure
 You can use this project as a starting point for further customization to meet your need.
-- `Record.kt`: model class to hold row data
+- `Record.kt`: Model class to hold row data
 - `Reader.kt`: Reads data from `.csv` file and returns a 2d array.
 - `Parser.kt`: Gets 2d array data as input and returns a list of `Record` object
 - `Writer.kt`: Writes to file for each `Record` entry, based on format for a specific platform.
+- `Converter.kt`: Put `Record.kt` `Reader.kt` `Parser.kt` `Writer.kt` all together for converting process.
 
-## References:
-Inspired by these very good open sources:
-- https://github.com/talhahasanzia/string-resource-utility
-- https://pypi.org/project/mobile-strings-converter/0.1.0/
-- https://github.com/rogermolas/csv-localizer
+## TODO
+- [ ] Better exception handling
+- [ ] Build to command line binary
+- [ ] Document
