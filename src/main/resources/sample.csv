@@ -1,0 +1,4 @@
+comment;untranslatable;key;en;es;pt;fr;de;zh;
+;false;some_key_1;Version not supported!;¡La versión no es compatible!;Versão não suportada!;Version non prise en charge !;Version nicht unterstützt!;版本不受支持！;
+some comment;false;some_key_2;This version of the app is no longer supported, please update the app to continue using it.;"Esta versión de la aplicación ya no es compatible; deberá actualizar la aplicación para seguir utilizándola.";Esta versão do aplicativo não é mais suportada. Atualize o aplicativo para continuar usando-o.;Cette version de l'application n'est plus prise en charge. Veuillez mettre à jour l'application pour continuer à l'utiliser.;Diese Version der App wird nicht mehr unterstützt. Bitte aktualisieren Sie die App, um sie weiter nutzen zu können.;不再支持此版本的应用程序，请更新应用程序以继续使用。;
+;true;some_key_3;Update App;Actualizar aplicación;Atualizar aplicativo;Mettre à jour l'application;App aktualisieren;更新应用程序;
